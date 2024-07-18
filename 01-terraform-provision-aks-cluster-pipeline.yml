@@ -44,5 +44,5 @@ stages:
             inputs:
               command: 'validate'
               workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-manifests'
-              allowTelemetryCollection: true
+              allowTelemetryCollection: false
        
