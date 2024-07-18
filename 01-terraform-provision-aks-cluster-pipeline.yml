@@ -19,10 +19,23 @@ stages:
             displayName: Terraform Install
             inputs:
                 targetPath: '$(System.DefaultWorkingDirectory)/Du-Task-GitHub'
-                artifact: 'Du-Task-GitHub-out'
+                artifact: 'terraform-manifests'
                 publishLocation: 'pipeline'
           - task: TerraformInstaller@2
             inputs:
              terraformVersion: 'latest'
-             
+
+          - task: TerraformCLI@2
+            inputs:
+                  command: 'init'
+                  workingDirectory: '$(System.DefaultWorkingDirectory)/'
+                  backendType: 'azurerm'
+                  backendServiceArm: 'terraform-aks-azurerm-svc-con'
+                  backendAzureRmTenantId: '1ab9a4d0-1e66-456e-a0c7-5af91014d0bf'
+                  backendAzureRmSubscriptionId: '73067bac-a826-4716-8792-58d8f298f0a4'
+                  backendAzureRmResourceGroupName: 'tfstate-rg'
+                  backendAzureRmStorageAccountName: 'tfstatehiy'
+                  backendAzureRmContainerName: 'tfstate'
+                  backendAzureRmKey: 'aks-base.tfstate'
+                  allowTelemetryCollection: true
        
