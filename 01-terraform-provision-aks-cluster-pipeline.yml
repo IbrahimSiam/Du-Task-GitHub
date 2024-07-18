@@ -10,7 +10,7 @@ pool:
 ## Step-3: Validate Terraform Manifests (terraform init, terraform validate)
 
 stages:
-  - stage: TerraformValidateJob
+  - stage: TerraformValidate
     jobs:
       - job: TerraformValidateJob
         continueOnError: false
@@ -19,7 +19,7 @@ stages:
             displayName: Terraform Install
             inputs:
                 targetPath: '$(System.DefaultWorkingDirectory)/terraform-manifests'
-                artifact: 'terraform-manifests'
+                artifact: 'terraform-manifests-out'
                 publishLocation: 'pipeline'
           - task: TerraformInstaller@2
             inputs:
