@@ -16,8 +16,13 @@ stages:
         continueOnError: false
         steps:
           - task: PublishPipelineArtifact@1
+            displayName: Terraform Install
             inputs:
                 targetPath: '$(System.DefaultWorkingDirectory)/Du-Task-GitHub'
-                artifact: '$(Pipeline.Workspace)/Du-Task-GitHub-out'
+                artifact: 'Du-Task-GitHub-out'
                 publishLocation: 'pipeline'
+          - task: TerraformInstaller@2
+            inputs:
+             terraformVersion: 'latest'
+             
        
