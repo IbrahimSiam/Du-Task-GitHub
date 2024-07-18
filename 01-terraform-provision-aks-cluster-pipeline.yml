@@ -18,7 +18,7 @@ stages:
           - task: PublishPipelineArtifact@1
             displayName: Terraform Install
             inputs:
-                targetPath: '$(System.DefaultWorkingDirectory)/Du-Task-GitHub'
+                targetPath: '$(System.DefaultWorkingDirectory)/terraform-manifests'
                 artifact: 'terraform-manifests'
                 publishLocation: 'pipeline'
           - task: TerraformInstaller@2
